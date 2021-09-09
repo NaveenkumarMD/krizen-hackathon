@@ -1,9 +1,12 @@
-
 import './App.css';
+import {BrowserRouter as Router ,Route} from 'react-router-dom'
+import Home from './Screens/Home';
 
 function App() {
   return (
-    <div>Hello logan</div>
+      <Router>
+        <Route path="/" component={Home} exact />
+      </Router>
   );
 }
 

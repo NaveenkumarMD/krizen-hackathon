@@ -1,0 +1,16 @@
+.description-content-x{
+    color: #8B8B8B;   
+    font-size:14px;
+    margin-left: 5px;
+}
+.description-content{
+    margin-top:40px
+}
+.accept-button{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px
+}

@@ -1,4 +1,4 @@
-import './Home.css'
+import './home.css'
 import logo from '../../Assets/workerslogo.png';
 export default function HomePage(){
     return (

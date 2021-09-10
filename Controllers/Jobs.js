@@ -22,3 +22,9 @@ exports.addNewJob = async (req, res) => {
       res.status(404).send("Something went wrong. Can't add job")
     );
 };
+
+exports.getJob = async (req, res) => {
+  const id = req.body.id;
+  const job = await Job.findById(id);
+  res.send(job);
+};

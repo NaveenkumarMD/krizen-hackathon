@@ -20,19 +20,11 @@ const workerschema = mongoose.Schema({
     type: String,
     required: true,
   },
-  currentWork: {
+  rating: {
     type: [
       {
-        customerMail: String,
-        service: String,
-      },
-    ],
-  },
-  previousWork: {
-    type: [
-      {
-        customerMail: String,
-        service: String,
+        rating: Number,
+        comment: String,
       },
     ],
   },

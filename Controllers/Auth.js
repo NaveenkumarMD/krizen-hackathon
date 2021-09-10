@@ -18,8 +18,12 @@ exports.customerSignup = async (req, res) => {
     });
     dbCustomer
       .save()
-      .then(() => {
-        res.send("Signed up customer successfully");
+      .then(async () => {
+        const details = await Customer.findOne({ email: user.email });
+        res.json({
+          message: "Signed up customer successfully",
+          id: details._id,
+        });
       })
       .catch(() => res.status(404).send("customer signup failed"));
   }
@@ -41,8 +45,9 @@ exports.workerSignup = async (req, res) => {
     });
     dbWorker
       .save()
-      .then(() => {
-        res.send("Signed up worker successfully");
+      .then(async () => {
+        const details = await Worker.findOne({ email: user.email });
+        res.json({ message: "Signed up worker successfully", id: details._id });
       })
       .catch((err) => {
         res.status(404).send("worker signup failed");
@@ -55,7 +60,7 @@ exports.customerLogin = async (req, res) => {
   const user = req.body;
   const dbUser = await Customer.findOne({ email: user.email });
   if (dbUser.password === user.password)
-    res.json({ message: "Signin successfull", userType: "Customer" });
+    res.json({ message: "Signin successfull", id: dbUser._id });
   else res.status(404).send("User not found");
 };
 
@@ -63,6 +68,6 @@ exports.workerLogin = async (req, res) => {
   const user = req.body;
   const dbUser = await Worker.findOne({ email: user.email });
   if (dbUser.password === user.password)
-    res.json({ message: "Signin successfull", userType: "Worker" });
+    res.json({ message: "Signin successfull", id: dbUser._id });
   else res.status(404).send("User not found");
 };

@@ -8,11 +8,14 @@ const Jobsschema = mongoose.Schema({
     type: String,
     required: true,
   },
+  customerMail: {
+    typer: [String],
+  },
   status: {
-    type: Boolean,
+    type: String,
     required: true,
   },
-  minimumBid: {
+  bid: {
     type: Number,
     required: true,
   },

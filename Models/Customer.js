@@ -20,22 +20,6 @@ const customerschema = mongoose.Schema({
     type: String,
     required: true,
   },
-  currentHires: {
-    type: [
-      {
-        workerMail: String,
-        service: String,
-      },
-    ],
-  },
-  previousHires: {
-    type: [
-      {
-        workerMail: String,
-        service: String,
-      },
-    ],
-  },
 });
 
 module.exports = Customer = mongoose.model("customer", customerschema);

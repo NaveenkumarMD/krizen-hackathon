@@ -1,9 +1,12 @@
-
 import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import HomePage from './Screens/Home/HomePage';
 
 function App() {
   return (
-    <div>Hello logan</div>
+    <Router>
+      <Route path="/" exact><HomePage /></Route>
+    </Router>
   );
 }
 

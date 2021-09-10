@@ -9,10 +9,12 @@ import Jobsrecieved from './Screens/Jobsrecieved';
 function App() {
   return (
       <Router>
-        <Route path="/" component={Home} exact />
+      
         <Route path="/Searchworkers" component={Searchworkers}  />
         <Route path="/Addskills" component={Addskills}  />
         <Route path="/Jobsrecieved" component={Jobsrecieved}  />
+        <Route path="/" exact><HomePage /></Route>
+      <Route path="/worker"><FindWorkers/></Route>
       </Router>
   );
 }

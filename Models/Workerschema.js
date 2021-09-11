@@ -23,7 +23,7 @@ const workerschema = mongoose.Schema({
   skills: {
     type: [String],
   },
-  rating: {
+  ratings: {
     type: [
       {
         rating: Number,

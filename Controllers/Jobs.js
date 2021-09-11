@@ -131,7 +131,7 @@ exports.addRating = (req, res) => {
     { email: ratingDetails.workerMail },
     {
       $push: {
-        rating: {
+        ratings: {
           rating: ratingDetails.rating,
           comment: ratingDetails.comment,
         },
@@ -143,4 +143,18 @@ exports.addRating = (req, res) => {
       console.log(err);
       res.status(404).send("Failed to add rating");
     });
+};
+
+exports.getRating = async (req, res) => {
+  const details = req.body;
+  const worker = await Worker.findOne({ email: details.workerMail });
+  let avg = 0,
+    count = 0;
+  worker.ratings.forEach((rating) => {
+    avg += rating.rating;
+    count++;
+  });
+  res.json({
+    rating: (avg / count).toFixed(2),
+  });
 };

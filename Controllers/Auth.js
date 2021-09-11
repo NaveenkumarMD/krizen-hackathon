@@ -22,7 +22,13 @@ exports.customerSignup = async (req, res) => {
         const details = await Customer.findOne({ email: user.email });
         res.json({
           message: "Signed up customer successfully",
-          id: details._id,
+          user: {
+            id: details.id,
+            name: details.name,
+            email: details.email,
+            number: details.number,
+            location: details.location,
+          },
         });
       })
       .catch(() => res.status(404).send("customer signup failed"));
@@ -47,7 +53,16 @@ exports.workerSignup = async (req, res) => {
       .save()
       .then(async () => {
         const details = await Worker.findOne({ email: user.email });
-        res.json({ message: "Signed up worker successfully", id: details._id });
+        res.json({
+          message: "Signed up worker successfully",
+          user: {
+            id: details.id,
+            name: details.name,
+            email: details.email,
+            number: details.number,
+            location: details.location,
+          },
+        });
       })
       .catch((err) => {
         res.status(404).send("worker signup failed");
@@ -58,16 +73,34 @@ exports.workerSignup = async (req, res) => {
 
 exports.customerLogin = async (req, res) => {
   const user = req.body;
-  const dbUser = await Customer.findOne({ email: user.email });
-  if (dbUser.password === user.password)
-    res.json({ message: "Signin successfull", id: dbUser._id });
+  const details = await Customer.findOne({ email: user.email });
+  if (details.password === user.password)
+    res.json({
+      message: "Signin successfull",
+      user: {
+        id: details.id,
+        name: details.name,
+        email: details.email,
+        number: details.number,
+        location: details.location,
+      },
+    });
   else res.status(404).send("User not found");
 };
 
 exports.workerLogin = async (req, res) => {
   const user = req.body;
-  const dbUser = await Worker.findOne({ email: user.email });
-  if (dbUser.password === user.password)
-    res.json({ message: "Signin successfull", id: dbUser._id });
+  const details = await Worker.findOne({ email: user.email });
+  if (details.password === user.password)
+    res.json({
+      message: "Signin successfull",
+      user: {
+        id: details.id,
+        name: details.name,
+        email: details.email,
+        number: details.number,
+        location: details.location,
+      },
+    });
   else res.status(404).send("User not found");
 };

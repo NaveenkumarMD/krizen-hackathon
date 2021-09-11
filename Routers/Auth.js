@@ -9,7 +9,7 @@ const {
 authrouter.post("/customer/signup", customerSignup);
 authrouter.post("/worker/signup", workerSignup);
 
-authrouter.post("/customer/login", customerLogin);
-authrouter.post("/worker/login", workerLogin);
+authrouter.post("/customer/signin", customerLogin);
+authrouter.post("/worker/signin", workerLogin);
 
 module.exports = authrouter;

@@ -8,16 +8,29 @@ const Jobsschema = mongoose.Schema({
     type: String,
     required: true,
   },
-  customerMail: {
-    typer: [String],
+  customers: {
+    type: [
+      {
+        customerMail: String,
+        bid: Number,
+        comment: String,
+      },
+    ],
   },
   status: {
     type: String,
+    enum: ["posted", "pending", "finalized"],
     required: true,
   },
-  bid: {
+  minimumBid: {
     type: Number,
     required: true,
+  },
+  finalBid: {
+    type: Number,
+  },
+  finalCustomer: {
+    type: String,
   },
 });
 module.exports = Job = mongoose.model("jobs", Jobsschema);

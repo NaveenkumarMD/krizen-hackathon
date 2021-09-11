@@ -20,7 +20,10 @@ const workerschema = mongoose.Schema({
     type: String,
     required: true,
   },
-  rating: {
+  skills: {
+    type: [String],
+  },
+  ratings: {
     type: [
       {
         rating: Number,

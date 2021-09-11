@@ -11,7 +11,7 @@ const Jobsschema = mongoose.Schema({
   customers: {
     type: [
       {
-        email: String,
+        customerMail: String,
         bid: Number,
         comment: String,
       },
@@ -19,7 +19,7 @@ const Jobsschema = mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["posted", "pending", "accepted", "rejected", "completed"],
+    enum: ["posted", "pending", "finalized"],
     required: true,
   },
   minimumBid: {

@@ -1,6 +1,6 @@
-const { db } = require("../Models/Job");
 const Job = require("../Models/Job");
 const Worker = require("../Models/Workerschema");
+const Customer = require("../Models/Customer");
 
 exports.getAllJobs = async (req, res) => {
   const jobs = await Job.find({});
@@ -27,13 +27,9 @@ exports.addNewJob = async (req, res) => {
 };
 
 exports.getJob = async (req, res) => {
-  const email = req.body.email;
-  const jobs = await Job.find({ email: email });
-  const worker = await Worker.find({ email: email });
-  res.json({
-    worker: worker,
-    jobs: jobs,
-  });
+  const workerMail = req.body.workerMail;
+  const jobs = await Job.find({ email: workerMail });
+  res.send(jobs);
 };
 
 exports.bookJob = async (req, res) => {
@@ -44,7 +40,7 @@ exports.bookJob = async (req, res) => {
       status: "pending",
       $push: {
         customers: {
-          mail: details.customerEmail,
+          customerMail: details.customerMail,
           bid: details.bid,
           comment: details.comment,
         },
@@ -53,6 +49,21 @@ exports.bookJob = async (req, res) => {
   )
     .then((job) => {
       res.send("Bid placed successfully");
+      Customer.updateOne(
+        { mail: details.customerMail },
+        {
+          $push: {
+            bookedJobId: details.jobId,
+          },
+        }
+      )
+        .then((resp) => {
+          res.send("job id updated in customer doc");
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(404).send("job id updation failed");
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -60,18 +71,36 @@ exports.bookJob = async (req, res) => {
     });
 };
 
-exports.acceptBid = async (req, res) => {
+exports.acceptBid = (req, res) => {
   const details = req.body;
   Job.updateOne(
     { _id: details.jobId },
     {
-      status: "accepted",
+      status: "finalized",
       finalBid: details.finalBid,
       finalCustomer: details.customerMail,
     }
   )
     .then(() => {
       res.send("Bid accepted successfully");
+      Customer.updateOne(
+        { email: details.customerMail },
+        {
+          $push: {
+            acceptedJobId: details.jobId,
+          },
+          $pull: {
+            bookedJobId: details.jobId,
+          },
+        }
+      )
+        .then((resp) => {
+          res.send("Bid added to customer doc");
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(404).send("Failed to add bid to customer doc");
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -79,7 +108,7 @@ exports.acceptBid = async (req, res) => {
     });
 };
 
-exports.addSkill = async (req, res) => {
+exports.addSkill = (req, res) => {
   const details = req.body;
   Worker.updateOne(
     { email: details.workerMail },
@@ -93,5 +122,25 @@ exports.addSkill = async (req, res) => {
     .catch((err) => {
       console.log(err);
       res.status(404).send("skill updation failed");
+    });
+};
+
+exports.addRating = (req, res) => {
+  const ratingDetails = req.body;
+  Worker.updateOne(
+    { email: ratingDetails.workerMail },
+    {
+      $push: {
+        rating: {
+          rating: ratingDetails.rating,
+          comment: ratingDetails.comment,
+        },
+      },
+    }
+  )
+    .then((resp) => res.send("rating added successfully"))
+    .catch((err) => {
+      console.log(err);
+      res.status(404).send("Failed to add rating");
     });
 };

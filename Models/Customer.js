@@ -20,6 +20,12 @@ const customerschema = mongoose.Schema({
     type: String,
     required: true,
   },
+  bookedJobId: {
+    type: [String],
+  },
+  acceptedJobId: {
+    type: [String],
+  },
 });
 
 module.exports = Customer = mongoose.model("customer", customerschema);

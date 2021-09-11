@@ -10,11 +10,10 @@ export default function FindWorkers() {
         <div>
             <nav>
                 <div className="logo">
-                    <img src={logo} alt="" srcset="" />
-                    <h2>Find workers</h2>
+                    <img src={logo} alt="" srcset="" width="100px" height="auto"/>
                 </div>
                 <div >
-                    <img src={avater} alt="" srcset="" className="avatar" />
+                    <img src={avater} alt="" srcset="" className="avatar"  style={{marginRight:"5%"}}/>
                 </div>
             </nav>
 

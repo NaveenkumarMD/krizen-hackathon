@@ -60,6 +60,7 @@ nav{
     font-size: 3rem;
     color: white;
     margin: 20px;
+    margin-top:5%;
 }
 .body-content p{
     margin-bottom: 20px;
@@ -72,21 +73,23 @@ nav{
 }
 .secondary-card{
     border: 1px solid rgba(255,255,255,0.5);
-    max-width: 250px;
+    max-width: 270px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px 30px;
+    padding: 20px 25px;
     border-radius: 20px;
 
 }
 .secondary-card p{
     margin: 5px 0px;
+    font-size: 15px;
     color: rgba(255,255,255,0.5);
 }
 .view{
    align-self: flex-end;
    cursor: pointer;
+   margin-top: 15px;
 }
 .primary-card{
     background-color: var(--primary);

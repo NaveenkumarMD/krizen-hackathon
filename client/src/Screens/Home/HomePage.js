@@ -5,19 +5,18 @@ export default function HomePage(){
         <div>
             <nav>
                 <div className="logo">
-                    <img src={logo} alt="" srcset="" height="80px" />
-                    <h2>Find workers</h2>
+                    <img src={logo} alt="" srcset="" width="100px" height="auto" />
                 </div>
           
                 <div className="navbtns">
-                    <button className="secondary">Sign Up</button>
-                    <button className="primary">Get started</button>
+                    <button className="secondary" style={{marginRight:"20px"}}>Sign Up</button>
+                    <button className="primary" style={{marginRight:"20px"}}>Get started</button>
                 </div>
             </nav>
             <section className="body-content">
                 <h1>Workers Collaborative Agency</h1>
                 <p>Ahead with more than 2000+ workers and more than  5 lakhs customers around the world</p>
-                <button className="primary">Get started</button>
+                <button className="primary" style={{marginTop:"30px"}}>Get started</button>
             </section>
 
             <section className="footer-cards">

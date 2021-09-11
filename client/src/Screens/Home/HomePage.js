@@ -5,7 +5,7 @@ export default function HomePage(){
         <div>
             <nav>
                 <div className="logo">
-                    <img src={logo} alt="" srcset="" />
+                    <img src={logo} alt="" srcset="" height="80px" />
                     <h2>Find workers</h2>
                 </div>
           

@@ -6,13 +6,18 @@ import Searchworkers from './Screens/Searchworkers';
 import Addskills from './Screens/Add skills';
 import Jobsrecieved from './Screens/Jobsrecieved';
 import HomePage from './Screens/Home/HomePage';
-import Findworkers from './Screens/FindWorkers/FindWorkers'
+import Findworkers from './Screens/FindWorkers/FindWorkers';
+import Signinworkers from './Screens/Signinworker';
+import Loginworker from './Screens/Loginworker';
+
 function App() {
   return (
       <Router>      
         <Route path="/Searchworkers" component={Searchworkers}  />
         <Route path="/Addskills" component={Addskills}  />
         <Route path="/Jobsrecieved" component={Jobsrecieved}  />
+        <Route path="/Signup-worker" component={Signinworkers}/>
+        <Route path="/Login-worker" component={Loginworker} />
         <Route path="/" exact component={HomePage}/>
       <Route path="/worker" component={Findworkers}/>
       </Router>

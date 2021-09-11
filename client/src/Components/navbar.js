@@ -6,7 +6,7 @@ function Navbar() {
     return (
         <div className="navbar">
             <div className="site-logo">
-               <img src={logo} alt="v"width="100px" height="auto"/>
+               <img src={logo} alt="v" width="100px" height="auto"/>
             </div>
             <div className="menu">
                 <img src={profile} alt="profile"  width="35px"/>

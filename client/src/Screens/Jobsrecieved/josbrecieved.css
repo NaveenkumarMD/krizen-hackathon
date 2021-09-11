@@ -1,7 +1,8 @@
 .description-content-x{
     color: #8B8B8B;   
     font-size:14px;
-    margin-left: 5px;
+    margin-left: 0px;
+    padding:10px
 }
 .description-content{
     margin-top:40px

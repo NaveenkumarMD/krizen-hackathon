@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./Loginworker.css";
 import Worker from "../../Assets/worker.jpg";
 import Coffee from "../../Assets/coffee.svg";
-
+import {useHistory} from 'react-router-dom';
 function Loginworker() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+const history = useHistory();
 
   const login = () => {
     // const re =
@@ -28,7 +29,11 @@ function Loginworker() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-      });
+        localStorage.setItem('workerdata',JSON.stringify({
+          ...data,password:null
+        }));
+        history.push('/Jobsrecieved');
+      }).catch((err)=>alert('Something went wrong'));
   };
 
   return (

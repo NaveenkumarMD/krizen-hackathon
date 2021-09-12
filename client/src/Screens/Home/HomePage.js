@@ -5,8 +5,8 @@ export default function HomePage(){
         <div>
             <nav>
                 <div className="logo">
-                    <img src={logo} alt="" srcset="" height="80px" />
-                    <h2>Find workers</h2>
+                    <img src={logo} alt="" srcset="" height="auto" width="100px"/>
+                    
                 </div>
           
                 <div className="navbtns">

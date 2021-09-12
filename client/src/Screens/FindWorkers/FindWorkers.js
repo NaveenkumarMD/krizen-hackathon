@@ -10,7 +10,7 @@ export default function FindWorkers() {
         <div>
             <nav>
                 <div className="logo">
-                    <img src={logo} alt="" srcset="" />
+                    <img src={logo} alt="" srcset="" height="auto" width="100px"/>
                     <h2>Find workers</h2>
                 </div>
                 <div >

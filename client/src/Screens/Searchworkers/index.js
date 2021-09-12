@@ -7,7 +7,7 @@ function Searchworkers() {
         <div className="searchworkers">
             <Navbar />
             <div className="searchworkers-container">
-                <h1>Search Workers</h1>
+                <h1>Search Works</h1>
                 <p>Find the appropriate workers for your specific job </p>
                 <div className="search-container">
                     <div className="search-row">

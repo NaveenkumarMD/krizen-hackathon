@@ -72,6 +72,7 @@ exports.workerSignup = async (req, res) => {
 };
 
 exports.customerLogin = async (req, res) => {
+  console.log("working");
   const user = req.body;
   const details = await Customer.findOne({ email: user.email });
   if (details.password === user.password)

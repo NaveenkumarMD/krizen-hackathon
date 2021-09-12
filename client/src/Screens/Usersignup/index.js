@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import "./signupworker.css";
+import React from "react";
+import { useState } from "react";
 
-
-function Signupworker() {
-  const [name,setname] = useState("");
+export default function UserSignup() {
+    const [name,setname] = useState("");
     const[password,setpassword]=useState("");
     const[number,setnumber]=useState(0);
     const[email,setemail]=useState("");
@@ -24,4 +23,3 @@ function Signupworker() {
   );
 }
 
-export default Signupworker;

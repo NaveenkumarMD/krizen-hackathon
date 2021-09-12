@@ -8,8 +8,10 @@ const {
   addSkill,
   addRating,
   getRating,
+  getallworkers,
 } = require("../Controllers/Jobs");
 
+jobsrouter.get("/allworkers",getallworkers)
 jobsrouter.get("/jobs", getAllJobs);
 jobsrouter.post("/job", getJob);
 jobsrouter.post("/newjob", addNewJob);

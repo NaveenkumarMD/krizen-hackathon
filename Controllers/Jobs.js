@@ -7,6 +7,11 @@ exports.getAllJobs = async (req, res) => {
   res.send(jobs);
 };
 
+exports.getallworkers=async (req,res) =>{
+  const workers=await Worker.find({});
+  console.log(workers)
+  res.send(workers)
+}
 exports.addNewJob = async (req, res) => {
   const jobDetails = req.body;
   const newJob = new Job({

@@ -1,13 +1,21 @@
-import React,{useEffect} from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../Components/navbar'
 import './searchworkers.css'
 import searchicon from '../../Assets/search.svg'
 import works from '../../Assets/jobsdata'
 import cities from '../../Assets/citiesdata'
 function Searchworkers() {
-    useEffect(()=>{
-        fetch("")
-    },[])
+    const [data, setdata] = useState([])
+    useEffect(async () => {
+        fetch("http://localhost:2000/allworkers", {
+            method: "GET",
+            headers: {
+                "content-type": "applicatiom/json"
+            }
+        }).then(res => res.json()).then(data => {
+            setdata(data)
+        })
+    }, [])
     return (
         <div className="searchworkers">
             <Navbar />
@@ -55,21 +63,29 @@ function Searchworkers() {
                 </div>
                 <p style={{ marginTop: "8%" }}>5 matches found</p>
                 <div className="search-container">
-                    <div className="search-result">
-                        <div className="search-result-name">
-                            <div className="search-profile"></div>
-                            <div className="profile-name-container">
-                                <div>Naveenkumar</div>
-                                <div className="profile-skills">
-                                    <div className="profile-skill">Plumber</div>
-                                    <div className="profile-skill">Plumber</div>
+                    {
+                        data.map(data => {
+                            console.log(data)
+                            return (
+                                <div className="search-result">
+                                <div className="search-result-name">
+                                    <div className="search-profile"></div>
+                                    <div className="profile-name-container">
+                                        <div>{data.name}</div>
+                                        <div className="profile-skills">
+                                            <div className="profile-skill">Plumber</div>
+                                            <div className="profile-skill">Plumber</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button className="btn search-button">View</button>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <button className="btn search-button">View</button>
-                        </div>
-                    </div>
+                                )
+                        })
+                    }
+
                 </div>
             </div>
 

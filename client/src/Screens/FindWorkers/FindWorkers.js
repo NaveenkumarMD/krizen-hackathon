@@ -5,7 +5,9 @@ import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 
-export default function FindWorkers() {
+export default function FindWorkers(props) {
+    console.log(props.history.location.state)
+    const data=props.history.location.state
     return (
         <div>
             <nav>
@@ -29,7 +31,7 @@ export default function FindWorkers() {
                      
                             <div className="details">
                                 <p className="details-head">Name</p>
-                                <p>: NaveenKumar M</p>
+                                <p>: {data.name}</p>
                             </div>
                             <div className="details">
                                 <p className="details-head">Charges</p>

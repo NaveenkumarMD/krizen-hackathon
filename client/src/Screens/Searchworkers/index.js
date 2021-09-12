@@ -4,8 +4,15 @@ import './searchworkers.css'
 import searchicon from '../../Assets/search.svg'
 import works from '../../Assets/jobsdata'
 import cities from '../../Assets/citiesdata'
+import logo from '../../Assets/site-logo.png'
+import {Link,useHistory} from 'react-router-dom'
+import profile from '../../Assets/profile.png'
 function Searchworkers() {
+    const history=useHistory()
     const [data, setdata] = useState([])
+    const [search,setsearch] =useState("")
+    const [skill,setskill]=useState("")
+    const [location,setlocation]=useState("")
     useEffect(async () => {
         fetch("http://localhost:2000/allworkers", {
             method: "GET",
@@ -18,7 +25,17 @@ function Searchworkers() {
     }, [])
     return (
         <div className="searchworkers">
-            <Navbar />
+                    <div className="navbar">
+            <div className="site-logo">
+               <img src={logo} alt="v" width="100px" height="auto"/>
+            </div>
+            <div className="routes">
+                <Link to="/Searchworkers" className="link">Searchworkers</Link>
+            </div>
+            <div className="menu">
+                <img src={profile} alt="profile"  width="35px"/>
+            </div>
+        </div>
             <div className="searchworkers-container">
                 <h1>Search Works</h1>
                 <p>Find the appropriate workers for your specific job </p>
@@ -26,7 +43,7 @@ function Searchworkers() {
                     <div className="search-row">
                         <div className="search-row-container">
                             <img src={searchicon} alt="search" width="25px" height="25px" />
-                            <input placeholder="Search with the work title " />
+                            <input placeholder="Search with the work title " onChange={e=>setsearch(e.target.value)} value={search}/>
                         </div>
                         <div>
                             <div className="btn-group">
@@ -40,7 +57,7 @@ function Searchworkers() {
                         </div>
                     </div>
                     <div className="filters">
-                        <select name="skills" id="skills" className="sort-button">{
+                        <select name="skills" id="skills" className="sort-button" onChange={e=>setskill(e.target.value)}>{
                             works.map(data => {
                                 return (
                                     <option value={data}>{data}</option>
@@ -48,7 +65,7 @@ function Searchworkers() {
                             })
                         }
                         </select>
-                        <select name="location" id="location" className="sort-button">{
+                        <select name="location" id="location" className="sort-button" onChange={e=>setlocation(e.target.value)}>{
                             cities.map(data => {
                                 if (data.length < 13) {
                                     return (
@@ -65,7 +82,9 @@ function Searchworkers() {
                 <div className="search-container">
                     {
                         data.map(data => {
-                            console.log(data)
+                            console.log(data.location.toLowerCase()===location.toLowerCase() || location =="")
+                            console.log((data.skills.includes(skill) || skill===""))
+                            if(data.name.toLowerCase().indexOf(search)>-1 && (data.skills.includes(skill) || skill==="") && (location==="" || data.location.toLowerCase()===location.toLowerCase())){
                             return (
                                 <div className="search-result">
                                 <div className="search-result-name">
@@ -73,16 +92,27 @@ function Searchworkers() {
                                     <div className="profile-name-container">
                                         <div>{data.name}</div>
                                         <div className="profile-skills">
-                                            <div className="profile-skill">Plumber</div>
-                                            <div className="profile-skill">Plumber</div>
+                                            <div className="profile-skill">{data.location}</div>
+                                            {
+                                                data.skills.map(res=>{
+                                                    return(
+                                                    <div className="profile-skill">{res}</div>
+                                                    )
+                                                })
+                                            }
+                                            
                                         </div>
                                     </div>
                                 </div>
                                 <div>
-                                    <button className="btn search-button">View</button>
+                                    <button className="btn search-button" onClick={()=>{
+                                        history.push("/worker",{
+                                            ...data
+                                        })
+                                    }}>View</button>
                                 </div>
                             </div>
-                                )
+                                )}
                         })
                     }
 

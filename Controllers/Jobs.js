@@ -113,6 +113,10 @@ exports.acceptBid = (req, res) => {
     });
 };
 
+exports.getworkerdetails=(req,res)=>{
+  const id=req.body.id
+  console.log(id)
+}
 exports.addSkill = (req, res) => {
   const details = req.body;
   Worker.updateOne(

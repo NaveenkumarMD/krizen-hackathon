@@ -6,6 +6,7 @@ export default function UserSignup() {
   const [password, setpassword] = useState("");
   const [number, setnumber] = useState(0);
   const [email, setemail] = useState("");
+  const [location, setlocation] = useState("");
 
   const signUp = () => {
     // const re =
@@ -24,8 +25,8 @@ export default function UserSignup() {
        name,
         email,
         password,
-        number: 8870499146,
-        location: "coimbatore",
+        number,
+        location
       }),
     })
       .then((res) => res.json())
@@ -45,6 +46,8 @@ export default function UserSignup() {
       <input type="tel" onChange={(e) => setnumber(e.target.value)} />
       <p>Password</p>
       <input type="password" onChange={(e) => setpassword(e.target.value)} />
+      <p>Location</p>
+      <input type="text" onChange={(e) => setlocation(e.target.value)} />
       <button className="buttn" onClick={signUp}>
         Submit
       </button>

@@ -14,6 +14,22 @@ function Addskills() {
         })
         setresults(count)
     }, [search])
+    const submit=(data)=>{
+        console.log(data)
+        // fetch("newjob",{
+        //     method:"POST",
+        //     headers:{
+        //         "content-type":"application/json"
+        //     },
+        //     body:JSON.stringify({
+
+        //     })
+        // }).then(res=>res.json()).then(data=>{
+        //     console.log(data)
+        // }).catch((err=>{
+        //     alert(err.message)
+        // }))
+    }
     return (
         <div>
             <Navbar />
@@ -53,7 +69,7 @@ function Addskills() {
                                         </div>
                                     </div>
                                     <div>
-                                        <button className="btn search-button">Add</button>
+                                        <button className="btn search-button" onClick={()=>submit(data)}>Add</button>
                                     </div>
                                 </div>
                             

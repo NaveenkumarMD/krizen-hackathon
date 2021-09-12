@@ -1,8 +1,13 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Navbar from '../../Components/navbar'
 import './searchworkers.css'
 import searchicon from '../../Assets/search.svg'
+import works from '../../Assets/jobsdata'
+import cities from '../../Assets/citiesdata'
 function Searchworkers() {
+    useEffect(()=>{
+        fetch("")
+    },[])
     return (
         <div className="searchworkers">
             <Navbar />
@@ -27,32 +32,39 @@ function Searchworkers() {
                         </div>
                     </div>
                     <div className="filters">
-                        <select name="cars" id="cars" className="sort-button">
-                            <option value="volvo" style={{ padding: "90px" }}>Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                        <select name="skills" id="skills" className="sort-button">{
+                            works.map(data => {
+                                return (
+                                    <option value={data}>{data}</option>
+                                )
+                            })
+                        }
                         </select>
-                        <select name="cars" id="cars" className="sort-button">
-                            <option value="volvo" style={{ padding: "90px" }}>Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                        <select name="location" id="location" className="sort-button">{
+                            cities.map(data => {
+                                if (data.length < 13) {
+                                    return (
+                                        <option value={data}>{data}</option>
+                                    )
+                                }
+                            })
+                        }
                         </select>
+
                     </div>
                 </div>
-                <p style={{marginTop:"8%"}}>5 matches found</p>
-                <div className="search-container">  
+                <p style={{ marginTop: "8%" }}>5 matches found</p>
+                <div className="search-container">
                     <div className="search-result">
                         <div className="search-result-name">
                             <div className="search-profile"></div>
                             <div className="profile-name-container">
-                                   <div>Naveenkumar</div>
-                                   <div className="profile-skills">
-                                        <div className="profile-skill">Plumber</div>
-                                        <div className="profile-skill">Plumber</div>
-                                   </div>
-                         </div>
+                                <div>Naveenkumar</div>
+                                <div className="profile-skills">
+                                    <div className="profile-skill">Plumber</div>
+                                    <div className="profile-skill">Plumber</div>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <button className="btn search-button">View</button>

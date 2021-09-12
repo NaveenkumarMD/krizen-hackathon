@@ -15,7 +15,9 @@ body{
     font-family: 'Comfortaa', cursive;
     min-height: 100vh;
 }
-
+img{
+    height: 80px;
+}
 nav{
     display: flex;
     flex-direction: row;
@@ -73,11 +75,11 @@ nav{
 }
 .secondary-card{
     border: 1px solid rgba(255,255,255,0.5);
-    max-width: 270px;
+    max-width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px 25px;
+    padding: 20px 30px;
     border-radius: 20px;
 
 }

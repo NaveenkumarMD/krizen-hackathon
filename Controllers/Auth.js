@@ -6,6 +6,7 @@ exports.customerSignup = async (req, res) => {
   const user = req.body;
   const existingName = await Customer.findOne({ name: user.name });
   const existingEmail = await Customer.findOne({ email: user.email });
+  
   if (existingName || existingEmail) {
     res.status(409).send("Username or email has already been taken");
   } else {
@@ -75,6 +76,9 @@ exports.customerLogin = async (req, res) => {
   console.log("working");
   const user = req.body;
   const details = await Customer.findOne({ email: user.email });
+  if(!details){
+  res.status(404).send("User already exist");
+  }
   if (details.password === user.password)
     res.json({
       message: "Signin successfull",

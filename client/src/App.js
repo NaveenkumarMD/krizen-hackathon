@@ -7,7 +7,7 @@ import Addskills from './Screens/Add skills';
 import Jobsrecieved from './Screens/Jobsrecieved';
 import HomePage from './Screens/Home/HomePage';
 import Findworkers from './Screens/FindWorkers/FindWorkers';
-import Signinworkers from './Screens/Signinworker';
+import Signinworkers from './Screens/SignUpworker';
 import Loginworker from './Screens/Loginworker';
 import UserSignup from './Screens/Usersignup';
 import UserLogin from './Screens/Userlogin';

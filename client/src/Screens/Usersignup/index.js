@@ -15,7 +15,7 @@ export default function UserSignup() {
     // }
 
     console.log(password);
-    fetch("http://localhost:2000/worker/signup", {
+    fetch("http://localhost:2000/customer/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

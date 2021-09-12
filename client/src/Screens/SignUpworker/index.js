@@ -15,7 +15,7 @@ function Signupworker() {
       // }
   
       console.log(password);
-      fetch("http://localhost:2000/customer/signup", {
+      fetch("http://localhost:2000/worker/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

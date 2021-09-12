@@ -6,6 +6,31 @@ import Coffee from "../../Assets/coffee.svg";
 function Loginworker() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+
+  const login = () => {
+    // const re =
+    //   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // if (!re.test(email)) {
+    //   return alert("Invalid email");
+    // }
+
+    console.log(email);
+    fetch("http://localhost:2000/worker/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
   return (
     <div className="Logindiv">
       <img src={Worker} className="image" alt="Worker" />
@@ -24,6 +49,7 @@ function Loginworker() {
         />
         <button
           className="buttn"
+          onClick={login}
           style={{ position: "relative", left: 0, bottom: "10px" }}
         >
           Submit

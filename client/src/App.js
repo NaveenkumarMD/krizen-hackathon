@@ -11,6 +11,7 @@ import Signinworkers from './Screens/SignUpworker';
 import Loginworker from './Screens/Loginworker';
 import UserSignup from './Screens/Usersignup';
 import UserLogin from './Screens/Userlogin';
+import ViewAssignedworks from './Screens/ViewAssignedworks';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/User-signup" component={UserSignup} />
         <Route path="/" exact component={HomePage}/>
       <Route path="/worker" component={Findworkers}/>
+      <Route path="/viewassignedworks" component={ViewAssignedworks}/>
       </Router>
   );
 }

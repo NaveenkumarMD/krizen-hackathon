@@ -20,7 +20,7 @@ export default function HomePage() {
           Ahead with more than 2000+ workers and more than 5 lakhs customers
           around the world
         </p>
-        <button className="primary">Get started</button>
+        <button className="primary" style={{marginTop:"20px"}}>Get started</button>
       </section>
 
       <section className="footer-cards">

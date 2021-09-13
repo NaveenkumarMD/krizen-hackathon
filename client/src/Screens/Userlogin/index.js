@@ -29,7 +29,7 @@ function UserLogin() {
       .then((data) => {
         console.log(data);
         localStorage.setItem('userdata',JSON.stringify({
-          ...data,password:null
+          ...data.user
         }));
         
         history.push("/Searchworkers");

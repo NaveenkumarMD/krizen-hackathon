@@ -8,8 +8,11 @@ const {
   addSkill,
   addRating,
   getRating,
+  getallworkers,
+  getworkerdetails,
 } = require("../Controllers/Jobs");
 
+jobsrouter.get("/allworkers",getallworkers)
 jobsrouter.get("/jobs", getAllJobs);
 jobsrouter.post("/job", getJob);
 jobsrouter.post("/newjob", addNewJob);
@@ -18,5 +21,5 @@ jobsrouter.patch("/accept", acceptBid);
 jobsrouter.patch("/addskill", addSkill);
 jobsrouter.patch("/addrating", addRating);
 jobsrouter.post("/getrating", getRating);
-
+jobsrouter.post("/getworkerdetails",getworkerdetails);
 module.exports = jobsrouter;

@@ -60,6 +60,7 @@ nav{
     font-size: 3rem;
     color: white;
     margin: 20px;
+    margin-top:5%;
 }
 .body-content p{
     margin-bottom: 20px;
@@ -82,11 +83,13 @@ nav{
 }
 .secondary-card p{
     margin: 5px 0px;
+    font-size: 15px;
     color: rgba(255,255,255,0.5);
 }
 .view{
    align-self: flex-end;
    cursor: pointer;
+   margin-top: 15px;
 }
 .primary-card{
     background-color: var(--primary);

@@ -1,36 +1,25 @@
 const mongoose = require("mongoose");
+const {ObjectId} =mongoose.Schema.Types
 const Jobsschema = mongoose.Schema({
-  title: {
-    type: String,
+  customerId:{
+    type:ObjectId,
     required: true,
   },
-  workerMail: {
-    type: String,
+  workerId:{
+    type:ObjectId,
     required: true,
   },
-  customers: {
-    type: [
-      {
-        customerMail: String,
-        bid: Number,
-        comment: String,
-      },
-    ],
+  status:{
+    type:String,
   },
-  status: {
-    type: String,
-    enum: ["posted", "pending", "finalized"],
-    required: true,
+  minimumbid:{
+    type:Number,
   },
-  minimumBid: {
-    type: Number,
-    required: true,
+  location:{
+    type:String,
   },
-  finalBid: {
-    type: Number,
-  },
-  finalCustomer: {
-    type: String,
-  },
+  time:{
+    type:String
+  }
 });
 module.exports = Job = mongoose.model("jobs", Jobsschema);

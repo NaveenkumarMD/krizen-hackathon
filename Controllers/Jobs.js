@@ -13,12 +13,15 @@ exports.getallworkers=async (req,res) =>{
   res.send(workers)
 }
 exports.addNewJob = async (req, res) => {
-  const jobDetails = req.body;
+  const details = req.body;
   const newJob = new Job({
-    title: jobDetails.title,
-    workerMail: jobDetails.workerMail,
-    status: jobDetails.status,
-    minimumBid: jobDetails.minimumBid,
+    customerId:details.customerId,
+    workerId:details.workerId,
+    status: details.status,
+    minimumBid: details.minimumBid,
+    location:details.location,
+    time:details.time
+    
   });
   newJob
     .save()

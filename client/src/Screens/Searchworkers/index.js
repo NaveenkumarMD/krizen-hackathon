@@ -13,6 +13,11 @@ function Searchworkers() {
     const [search,setsearch] =useState("")
     const [skill,setskill]=useState("")
     const [location,setlocation]=useState("")
+    const clear=()=>{
+        setsearch("")
+        setskill("")
+        setlocation("")
+    }
     useEffect(async () => {
         fetch("http://localhost:2000/allworkers", {
             method: "GET",
@@ -47,7 +52,7 @@ function Searchworkers() {
                         </div>
                         <div>
                             <div className="btn-group">
-                                <button className="btn clear-button">
+                                <button className="btn clear-button" onClick={clear}>
                                     Clear
                                 </button>
                                 <button className="btn search-button">

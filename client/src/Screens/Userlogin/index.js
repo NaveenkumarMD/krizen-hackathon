@@ -60,6 +60,7 @@ function UserLogin() {
         >
           Submit
         </button>
+        <div style={{marginTop:"10px",fontSize:"14px",color:"gray",cursor:"pointer"}} onClick={()=>history.push("/user-signup")}>New to Find workers?</div>
         <img className="coffee" src={Coffee} alt="Worker" />
       </div>
       <p className="quote">

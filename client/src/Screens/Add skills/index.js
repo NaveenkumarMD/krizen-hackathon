@@ -5,6 +5,7 @@ import work from '../../Assets/jobsdata'
 function Addskills() {
     const [search,setsearch]=useState("")
     const [results,setresults]=useState(0)
+    const workerdata=JSON.parse(localStorage.getItem('workerdata'))
     useEffect(() => {
         var count=0
         work.map((data)=>{
@@ -16,19 +17,20 @@ function Addskills() {
     }, [search])
     const submit=(data)=>{
         console.log(data)
-        // fetch("newjob",{
-        //     method:"POST",
-        //     headers:{
-        //         "content-type":"application/json"
-        //     },
-        //     body:JSON.stringify({
-
-        //     })
-        // }).then(res=>res.json()).then(data=>{
-        //     console.log(data)
-        // }).catch((err=>{
-        //     alert(err.message)
-        // }))
+        fetch("http://localhost:2000/addskill",{
+            method:"PATCH",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify({
+                workerMail:workerdata.email,
+                skill:data
+            })
+        }).then(res=>res.json()).then(data=>{
+            console.log(data)
+        }).catch((err=>{
+            
+        }))
     }
     return (
         <div>

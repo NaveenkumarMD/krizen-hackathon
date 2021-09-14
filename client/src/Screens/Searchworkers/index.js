@@ -30,20 +30,17 @@ function Searchworkers() {
     }, [])
     return (
         <div className="searchworkers">
-                    <div className="navbar">
-            <div className="site-logo">
-               <img src={logo} alt="v" width="100px" height="auto"/>
-            </div>
-            <div className="routes">
-                <Link to="/Searchworkers" className="link">Searchworkers</Link>
-            </div>
-            <div className="menu">
-                <img src={profile} alt="profile"  width="35px"/>
-            </div>
-        </div>
+            <Navbar/>
             <div className="searchworkers-container">
-                <h1>Search Works</h1>
+                <div className="flex space-between align-center">
+                    <div>
+                    <h1>Search Works</h1>
                 <p>Find the appropriate workers for your specific job </p>
+                    </div>
+                    <button onClick={()=>history.push("/viewassignedworks")}
+                     className="btn search-btn" style={{color:"white",backgroundColor:"#286EF1"}}>View Assigned jobs</button>
+                </div>
+
                 <div className="search-container">
                     <div className="search-row">
                         <div className="search-row-container">

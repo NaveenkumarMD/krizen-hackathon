@@ -30,7 +30,7 @@ const history = useHistory();
       .then((data) => {
         console.log(data);
         localStorage.setItem('workerdata',JSON.stringify({
-          ...data,password:null
+          ...data.user
         }));
         history.push('/Jobsrecieved');
       }).catch((err)=>alert('Something went wrong'));
@@ -59,6 +59,7 @@ const history = useHistory();
         >
           Submit
         </button>
+        <div style={{marginTop:"10px",fontSize:"14px",color:"gray",cursor:"pointer"}} onClick={()=>history.push("/signup-worker")}>New to Find workers?</div>
         <img className="coffee" src={Coffee} alt="Worker" />
       </div>
       <p className="quote">

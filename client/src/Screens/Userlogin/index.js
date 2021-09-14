@@ -1,25 +1,24 @@
-import React, { useState } from "react";
-import "./Loginworker.css";
+import React from "react";
 import Worker from "../../Assets/worker.jpg";
 import Coffee from "../../Assets/coffee.svg";
+import { useState } from "react";
 import {useHistory} from 'react-router-dom';
-function Loginworker() {
+function UserLogin() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-const history = useHistory();
-
-  const login = () => {
+  const history = useHistory();
+  const login =  () => {
     // const re =
     //   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     // if (!re.test(email)) {
     //   return alert("Invalid email");
     // }
-
+    
     console.log(email);
-    fetch("http://localhost:2000/worker/signin", {
+    fetch("http://localhost:2000/customer/signin", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': "application/json",
       },
       body: JSON.stringify({
         email,
@@ -29,13 +28,13 @@ const history = useHistory();
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        localStorage.setItem('workerdata',JSON.stringify({
+        localStorage.setItem('userdata',JSON.stringify({
           ...data.user
         }));
-        history.push('/Jobsrecieved');
-      }).catch((err)=>alert('Something went wrong'));
+        
+        history.push("/Searchworkers");
+      }).catch((err)=>alert("Something went wrong"));
   };
-
   return (
     <div className="Logindiv">
       <img src={Worker} className="image" alt="Worker" />
@@ -45,21 +44,23 @@ const history = useHistory();
         <input
           type="email"
           placeholder="E-mail"
+          value={email}
           onChange={(e) => setemail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
+          value={password}
           onChange={(e) => setpassword(e.target.value)}
         />
         <button
           className="buttn"
-          onClick={login}
           style={{ position: "relative", left: 0, bottom: "10px" }}
+          onClick={login}
         >
           Submit
         </button>
-        <div style={{marginTop:"10px",fontSize:"14px",color:"gray",cursor:"pointer"}} onClick={()=>history.push("/signup-worker")}>New to Find workers?</div>
+        <div style={{marginTop:"10px",fontSize:"14px",color:"gray",cursor:"pointer"}} onClick={()=>history.push("/user-signup")}>New to Find workers?</div>
         <img className="coffee" src={Coffee} alt="Worker" />
       </div>
       <p className="quote">
@@ -69,4 +70,5 @@ const history = useHistory();
     </div>
   );
 }
-export default Loginworker;
+
+export default UserLogin;

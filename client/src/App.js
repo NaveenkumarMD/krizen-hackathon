@@ -7,8 +7,11 @@ import Addskills from './Screens/Add skills';
 import Jobsrecieved from './Screens/Jobsrecieved';
 import HomePage from './Screens/Home/HomePage';
 import Findworkers from './Screens/FindWorkers/FindWorkers';
-import Signinworkers from './Screens/Signinworker';
+import Signinworkers from './Screens/SignUpworker';
 import Loginworker from './Screens/Loginworker';
+import UserSignup from './Screens/Usersignup';
+import UserLogin from './Screens/Userlogin';
+import ViewAssignedworks from './Screens/ViewAssignedworks';
 
 function App() {
   return (
@@ -18,8 +21,11 @@ function App() {
         <Route path="/Jobsrecieved" component={Jobsrecieved}  />
         <Route path="/Signup-worker" component={Signinworkers}/>
         <Route path="/Login-worker" component={Loginworker} />
+        <Route path="/User-login" component={UserLogin} />
+        <Route path="/User-signup" component={UserSignup} />
         <Route path="/" exact component={HomePage}/>
       <Route path="/worker" component={Findworkers}/>
+      <Route path="/viewassignedworks" component={ViewAssignedworks}/>
       </Router>
   );
 }

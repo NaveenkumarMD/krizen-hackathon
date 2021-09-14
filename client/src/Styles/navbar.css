@@ -9,3 +9,8 @@
     padding-right: 5%;
 
 }
+.routes>.link{
+    font-size: 14px;
+    text-decoration: none;
+    color: #8B8B8B; 
+}

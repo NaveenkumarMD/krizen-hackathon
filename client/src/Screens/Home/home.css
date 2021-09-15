@@ -10,6 +10,16 @@
     --primary: #286EF1;
     --secondary: #ffffff;
   }
+.flex{
+    flex-direction: row;
+    display: flex;
+}
+.space-between{
+    justify-content: space-between;
+}
+.align-center{
+    align-items: center;
+}
 body{
     background-color: black;
     font-family: 'Comfortaa', cursive;
